@@ -2,10 +2,10 @@ package Camel.camelProject.processor;
 
 import java.io.File;
 import java.io.FileOutputStream;
+import java.text.MessageFormat;
 
 import org.apache.camel.Exchange;
 import org.apache.camel.Processor;
-import org.slf4j.helpers.MessageFormatter;
 
 public class StudentAttendenceProcessor  implements Processor {
 	
@@ -19,7 +19,7 @@ public class StudentAttendenceProcessor  implements Processor {
 		{
 			String studentName=content[content.length-1];
 			FileOutputStream fos= new FileOutputStream(new File(AttendenceMergerFile),true);
-			fos.write((MessageFormatter.format("Student {0} is Present",studentName)).getMessage().getBytes());
+			fos.write((MessageFormat.format("Student {0} is Present\n",studentName)).getBytes());
 			fos.close();
 		}
 		
